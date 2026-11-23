@@ -20,7 +20,7 @@ export interface CTAButtonProps extends Omit<
 
 // Sobrescreve escala/tipo/foco do buttonVariants (shadcn) sem editá-lo.
 const base =
-  "h-auto gap-2 rounded-lg px-5 py-2 text-center text-base font-medium whitespace-normal [&_svg:not([class*='size-'])]:size-5 focus-visible:ring-3 focus-visible:ring-offset-2";
+  "h-auto gap-2 rounded-lg px-5 py-2 text-center text-base font-medium whitespace-normal [&_svg:not([class*='size-'])]:size-5 focus-visible:ring-3 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:active:not-aria-[haspopup]:translate-y-0";
 
 const variantes = {
   primary: cn(

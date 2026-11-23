@@ -51,3 +51,13 @@ describe("CTAButton", () => {
     );
   });
 });
+
+describe("CTAButton sob reduced motion", () => {
+  it("desliga transição e o deslocamento ao pressionar", () => {
+    render(<CTAButton contexto={{ tipo: "padrao" }}>A</CTAButton>);
+    expect(screen.getByRole("link")).toHaveClass(
+      "motion-reduce:transition-none",
+      "motion-reduce:active:not-aria-[haspopup]:translate-y-0",
+    );
+  });
+});

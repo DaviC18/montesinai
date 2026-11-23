@@ -78,6 +78,8 @@ export const clinica = {
     geo: { lat: -22.4718898, lng: -44.4635763 },
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Monte+Sinai+R.+Washington+Lu%C3%ADs+120+Resende+RJ",
+    mapsEmbedUrl:
+      "https://maps.google.com/maps?q=-22.4718898,-44.4635763&z=16&hl=pt-BR&output=embed",
   },
 
   timezone: "America/Sao_Paulo",
@@ -94,6 +96,107 @@ export const clinica = {
       abertoAte: "Aberto hoje até {hora}", // {hora} = formatHora(fecha) ⇒ "20h"
       fechado: "Fechado",
     },
+
+    // Textos de interface (Fase 2). `alvo` = id de âncora de SECTION_IDS (src/lib/sections.ts).
+    pularConteudo: "Pular para o conteúdo",
+    header: {
+      inicio: "Clínica Monte Sinai, ir para o início",
+      navegacao: "Navegação principal",
+      abrirMenu: "Abrir menu",
+      fecharMenu: "Fechar menu",
+      menuTitulo: "Menu",
+      agendar: "Agendar",
+      itens: [
+        { alvo: "especialidades", rotulo: "Especialidades" },
+        { alvo: "exames", rotulo: "Exames" },
+        { alvo: "convenios", rotulo: "Convênios" },
+        { alvo: "como-agendar", rotulo: "Como agendar" },
+        { alvo: "localizacao", rotulo: "Localização" },
+        { alvo: "faq", rotulo: "Dúvidas" },
+      ],
+    },
+    hero: {
+      subtitulo: "Consultas, exames e laboratório no mesmo endereço, na Vila Julieta, em Resende.",
+      pergunta: "O que você precisa?",
+      respostas: [
+        {
+          id: "consulta",
+          alvo: "especialidades",
+          rotulo: "Consulta",
+          detalhe: "Ver especialidades",
+        },
+        { id: "exame", alvo: "exames", rotulo: "Exame", detalhe: "Exames e laboratório" },
+        { id: "convenio", alvo: "convenios", rotulo: "Convênio", detalhe: "Planos e pagamento" },
+        { id: "chegar", alvo: "localizacao", rotulo: "Como chegar", detalhe: "Endereço e horário" },
+      ],
+      cta: "Agendar pelo WhatsApp",
+    },
+    especialidades: {
+      titulo: "Especialidades",
+      intro: "Escolha a especialidade e chame no WhatsApp. A mensagem já vai com o nome dela.",
+      agendar: "Agendar",
+      agendarRotulo: "Agendar consulta de {especialidade} pelo WhatsApp",
+      naoEncontrou: "Não encontrou a especialidade que procura?",
+      perguntar: "Perguntar pelo WhatsApp",
+    },
+    exames: {
+      titulo: "Exames e laboratório",
+      texto:
+        "O laboratório fica no mesmo prédio das consultas. Para saber se fazemos o exame do seu pedido e se ele precisa de preparo, chame no WhatsApp.",
+      cta: "Agendar exame",
+    },
+    convenios: {
+      titulo: "Convênios e pagamento",
+      planosTitulo: "Convênios",
+      planosPendente:
+        "Estamos atualizando a lista de convênios aceitos. Confirme o seu plano pelo WhatsApp antes de agendar.",
+      particularTitulo: "Particular",
+      particularTexto: "Para consultas e exames particulares, aceitamos:",
+      cta: "Confirmar meu plano",
+    },
+    diferenciais: {
+      titulo: "Por que a Monte Sinai",
+    },
+    comoAgendar: {
+      titulo: "Como agendar",
+      intro: "Três passos, sem precisar ligar.",
+      cta: "Agendar pelo WhatsApp",
+    },
+    localizacao: {
+      titulo: "Localização e horário",
+      enderecoTitulo: "Endereço",
+      horarioTitulo: "Horário de atendimento",
+      dias: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+      intervaloDias: "{inicio} a {fim}",
+      intervaloHoras: "{abre} às {fecha}",
+      aConfirmar: "a confirmar",
+      fechado: "Fechado",
+      comoChegar: "Como chegar",
+      ligar: "Ligar",
+      mapaTitulo: "Mapa: Clínica Monte Sinai, R. Washington Luís, 120, Resende",
+    },
+    faq: {
+      titulo: "Dúvidas frequentes",
+      maisDuvidas: "Ficou com alguma dúvida?",
+      cta: "Perguntar pelo WhatsApp",
+    },
+    ctaFinal: {
+      titulo: "Agende pelo WhatsApp",
+      texto: "Envie a mensagem pronta e nossa equipe confirma o dia e o horário com você.",
+      cta: "Agendar pelo WhatsApp",
+      ligar: "Prefere ligar?",
+    },
+    footer: {
+      enderecoTitulo: "Endereço",
+      contatoTitulo: "Contato",
+      redesTitulo: "Redes sociais",
+      instagram: "Instagram",
+      facebook: "Facebook",
+      novaAba: "(abre em nova aba)",
+      privacidade:
+        "Este site não tem formulários e não coleta dados pessoais. O agendamento acontece pelo WhatsApp.",
+    },
+    fab: "Agendar pelo WhatsApp",
   },
 
   especialidades: [
