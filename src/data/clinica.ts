@@ -6,8 +6,21 @@ export type DiaSemana = 0 | 1 | 2 | 3 | 4 | 5 | 6; // 0 = domingo
 
 export interface Horario {
   dias: DiaSemana[];
-  abre: string; // "07:00"
-  fecha: string; // "20:00"
+  abre: string; // "HH:MM", 24h
+  fecha: string; // "HH:MM", 24h, exclusivo (fecha "20:00" ⇒ 19:59 aberto, 20:00 fechado)
+  /** true enquanto a clínica não confirmar esta faixa. Selo de status fica oculto (ADR-004). */
+  pendente?: boolean;
+}
+
+export interface MensagensWhatsApp {
+  /** CTA genérico (Header, Hero, FAB, CTA final, Como agendar). */
+  padrao: string;
+  /** Card de especialidade. Placeholder obrigatório: {especialidade}. */
+  especialidade: string;
+  /** Seção Exames & Laboratório. */
+  exames: string;
+  /** FAQ, Convênios ("confirmar meu plano"), Localização. */
+  duvidas: string;
 }
 
 export interface Medico {
@@ -44,6 +57,17 @@ export const clinica = {
     facebook: "https://www.facebook.com/montesinairesende",
   },
 
+  // Textos aprovados pelo usuário (ADR-006). Neutros: sem promessa, preço ou urgência.
+  whatsapp: {
+    mensagens: {
+      padrao: "Olá! Vim pelo site da Clínica Monte Sinai e gostaria de agendar uma consulta.",
+      especialidade:
+        "Olá! Vim pelo site da Clínica Monte Sinai e gostaria de agendar uma consulta de {especialidade}.",
+      exames: "Olá! Vim pelo site da Clínica Monte Sinai e gostaria de agendar um exame.",
+      duvidas: "Olá! Vim pelo site da Clínica Monte Sinai e gostaria de tirar uma dúvida.",
+    } satisfies MensagensWhatsApp,
+  },
+
   endereco: {
     logradouro: "R. Washington Luís, 120",
     bairro: "Vila Julieta",
@@ -59,8 +83,18 @@ export const clinica = {
   timezone: "America/Sao_Paulo",
   horarios: [
     { dias: [1, 2, 3, 4, 5], abre: "07:00", fecha: "20:00" },
-    { dias: [6], abre: "07:00", fecha: "12:00" }, // TODO: confirmar sábado
+    { dias: [6], abre: "07:00", fecha: "12:00", pendente: true }, // TODO: confirmar sábado
   ] satisfies Horario[],
+  // Domingo (0) ausente = FECHADO (ADR-005). Não adicionar entrada para domingo.
+
+  // Rótulos do selo de horário (ADR-004; textos da SPEC §4 Hero e RF03).
+  ui: {
+    selo: {
+      aberto: "Aberto agora",
+      abertoAte: "Aberto hoje até {hora}", // {hora} = formatHora(fecha) ⇒ "20h"
+      fechado: "Fechado",
+    },
+  },
 
   especialidades: [
     {
