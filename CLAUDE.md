@@ -53,7 +53,7 @@ Use `/orquestrar <fase>` para rodar o ciclo.
 6. Mobile-first. Fonte base ≥ 18px. Contraste WCAG AA.
 7. Todo CTA de agendamento → `wa.me` com mensagem pré-preenchida (helper `buildWhatsAppLink`).
 8. Ao terminar uma tarefa: `npm run typecheck && npm run lint && npm run build` precisam passar.
-9. Commits pequenos, em português, formato `tipo(escopo): descrição`.
+9. Agentes NUNCA fazem commit nem rodam `git init`/`git commit`/`git push`. Commits são feitos só pelo usuário.
 
 ## Comandos
 

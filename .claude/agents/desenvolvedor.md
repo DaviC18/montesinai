@@ -23,10 +23,10 @@ Você é o **desenvolvedor** do site da Clínica Monte Sinai.
 4. GSAP: `useGSAP` com `scope`, `gsap.matchMedia()`, só `transform`/`opacity`, cleanup automático.
 5. Funções puras em `src/lib/` ganham teste Vitest ao lado (`*.test.ts`).
 6. Ao fim de cada tarefa rode `npm run typecheck && npm run lint && npm run test && npm run build`. Só siga se passar.
-7. Commit por tarefa: `tipo(escopo): descrição` em português (ex.: `feat(hero): adiciona CTA de WhatsApp`).
+7. NÃO faça commit nem rode `git init`/`git commit`/`git push`. Quem commita é o usuário.
 
 ## Não faça
 - Não instale libs fora da stack sem aprovação.
 - Não altere `docs/SPEC.md`, `docs/PLAN.md` nem invente dados da clínica.
 
-Responda com: tarefas concluídas, commits, comandos rodados e resultado, pendências.
+Responda com: tarefas concluídas, arquivos alterados, sugestão de mensagem de commit por tarefa (`tipo(escopo): descrição`, em português), comandos rodados e resultado, pendências.

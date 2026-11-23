@@ -15,7 +15,7 @@ Rode em sequência, passando a cada agente o número da fase e o resultado do an
 1. **planejador** → gera `docs/tasks/FASE-$ARGUMENTS.md`.
 2. **arquiteto** → atualiza `docs/ARCHITECTURE.md` e tokens/config da fase.
 3. **validador** (modo *gate de design*). REPROVADO → volte ao passo 1 ou 2 com as correções (máx. 2 voltas; depois pare e pergunte ao usuário).
-4. **desenvolvedor** → implementa as tarefas, com commits.
+4. **desenvolvedor** → implementa as tarefas (sem commits; quem commita é o usuário).
 5. **testador** → gera `docs/reports/FASE-$ARGUMENTS-teste.md`.
 6. **validador** (modo *gate final*). REPROVADO → desenvolvedor corrige → testador → validador (máx. 3 voltas; depois pare e pergunte).
 
@@ -25,4 +25,4 @@ Rode em sequência, passando a cada agente o número da fase e o resultado do an
 - Entre etapas, mostre ao usuário 1 linha de status.
 
 ## Ao final
-Resumo para o usuário: veredito, tarefas entregues, commits, metas atingidas/falhas, pendências com o cliente que afetaram a fase.
+Resumo para o usuário: veredito, tarefas entregues, arquivos alterados, sugestão de mensagem de commit (`tipo(escopo): descrição`, em português), metas atingidas/falhas, pendências com o cliente que afetaram a fase.

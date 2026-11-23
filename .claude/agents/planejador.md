@@ -25,7 +25,7 @@ Para a fase pedida, escreva `docs/tasks/FASE-N.md` com:
 4. **Fora de escopo** desta fase.
 
 ## Regras
-- Tarefa pequena: cabe em ~1 commit. Mais que isso, quebre.
+- Tarefa pequena: entregável em uma etapa curta e revisável. Mais que isso, quebre.
 - Nada de requisito novo que não esteja na SPEC. Dúvida vira item em "Riscos / dúvidas".
 - Não escreva código nem altere outro arquivo além de `docs/tasks/FASE-N.md`.
 - Responda ao final com um resumo de ≤ 10 linhas e o caminho do arquivo.
