@@ -1,8 +1,10 @@
+import { useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { CTAButton } from "@/components/base/CTAButton";
 import { Container } from "@/components/base/Container";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { clinica } from "@/data/clinica";
+import { gsap, MOTION_CONDITIONS, ScrollTrigger, useGSAP, type MotionConditions } from "@/lib/gsap";
 import { hrefSecao, SECTION_IDS } from "@/lib/sections";
 
 const { header } = clinica.ui;
@@ -11,8 +13,41 @@ const linkMenu =
   "rounded-md px-1 py-2 text-base font-medium text-foreground underline-offset-[0.3em] decoration-agua decoration-2 hover:underline";
 
 export default function Header() {
+  const scope = useRef<HTMLElement>(null);
+
+  // Sólido ao rolar (ARCHITECTURE regra 5): troca de atributo + opacity da camada de fundo.
+  // Sem JS ou com reduced motion, o header fica sempre sólido (estado padrão do CSS).
+  useGSAP(
+    () => {
+      const header = scope.current;
+      if (!header) return;
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_CONDITIONS, (ctx) => {
+        const { reduce } = ctx.conditions as MotionConditions;
+        if (reduce) return;
+        const marcar = (y: number) => {
+          header.dataset.solid = String(y > 8);
+        };
+        ScrollTrigger.create({
+          start: 0,
+          end: "max",
+          onUpdate: (self) => marcar(self.scroll()),
+        });
+        marcar(window.scrollY);
+        return () => {
+          delete header.dataset.solid;
+        };
+      });
+    },
+    { scope },
+  );
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 supports-backdrop-filter:bg-background/85 supports-backdrop-filter:backdrop-blur-sm">
+    <header ref={scope} className="group/header sticky top-0 z-40">
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 border-b border-border bg-background/95 shadow-soft transition-opacity duration-300 group-data-[solid=false]/header:opacity-0 supports-backdrop-filter:bg-background/85 supports-backdrop-filter:backdrop-blur-sm motion-reduce:transition-none"
+      />
       <Container className="flex h-header items-center justify-between gap-4">
         <a
           href={hrefSecao(SECTION_IDS.inicio)}

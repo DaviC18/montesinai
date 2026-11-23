@@ -1,4 +1,12 @@
-import { DURATION, gsap, MOTION_CONDITIONS, ScrollTrigger, STAGGER, useGSAP } from "@/lib/gsap";
+import {
+  DURATION,
+  gsap,
+  MOTION_CONDITIONS,
+  ScrollTrigger,
+  SplitText,
+  STAGGER,
+  useGSAP,
+} from "@/lib/gsap";
 
 describe("lib/gsap", () => {
   it("importa em jsdom e expõe gsap, ScrollTrigger e useGSAP", () => {
@@ -11,6 +19,7 @@ describe("lib/gsap", () => {
     // `core.globals()` existe em runtime, mas não está nos tipos públicos do gsap.
     const core = gsap.core as unknown as { globals: () => Record<string, unknown> };
     expect(core.globals().ScrollTrigger).toBe(ScrollTrigger);
+    expect(typeof SplitText.create).toBe("function");
   });
 
   it("expõe as condições padrão de matchMedia, incluindo reduced motion", () => {

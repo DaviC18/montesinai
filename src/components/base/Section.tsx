@@ -1,7 +1,7 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-export interface SectionProps extends ComponentPropsWithoutRef<"section"> {
+export interface SectionProps extends ComponentProps<"section"> {
   /** Âncora obrigatória (RF04). */
   id: string;
   tone?: "default" | "muted" | "inverse";

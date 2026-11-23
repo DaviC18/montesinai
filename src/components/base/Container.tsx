@@ -1,7 +1,7 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-export interface ContainerProps extends ComponentPropsWithoutRef<"div"> {
+export interface ContainerProps extends ComponentProps<"div"> {
   /** "content" = largura máxima do site (default) · "texto" = medida de leitura. */
   size?: "content" | "texto";
 }

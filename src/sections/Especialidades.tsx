@@ -1,27 +1,39 @@
+import { useRef } from "react";
 import { CTAButton } from "@/components/base/CTAButton";
 import { Container } from "@/components/base/Container";
 import { Heading } from "@/components/base/Heading";
 import { Section } from "@/components/base/Section";
 import { clinica, type Medico } from "@/data/clinica";
 import { confirmados, preencher } from "@/lib/conteudo";
+import { useReveal } from "@/hooks/useReveal";
 import { SECTION_IDS } from "@/lib/sections";
 
 const textos = clinica.ui.especialidades;
 
 export default function Especialidades() {
   const especialidades = confirmados(clinica.especialidades);
+  const scope = useRef<HTMLElement>(null);
+  useReveal(scope);
 
   return (
-    <Section id={SECTION_IDS.especialidades} tone="muted" aria-labelledby="especialidades-titulo">
+    <Section
+      ref={scope}
+      id={SECTION_IDS.especialidades}
+      tone="muted"
+      aria-labelledby="especialidades-titulo"
+    >
       <Container>
-        <div className="max-w-texto">
+        <div data-anim="reveal" className="max-w-texto">
           <Heading level={2} id="especialidades-titulo" className="text-primary">
             {textos.titulo}
           </Heading>
           <p className="mt-4 text-lg text-pretty text-muted-foreground">{textos.intro}</p>
         </div>
 
-        <ul className="mt-10 grid border-t border-input/40 md:grid-cols-2 md:gap-x-12">
+        <ul
+          data-anim="stagger"
+          className="mt-10 grid border-t border-input/40 md:grid-cols-2 md:gap-x-12"
+        >
           {especialidades.map((especialidade) => {
             const medicos = confirmados<Medico>(especialidade.medicos);
             return (
@@ -57,7 +69,10 @@ export default function Especialidades() {
           })}
         </ul>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+        <div
+          data-anim="reveal"
+          className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5"
+        >
           <p className="text-lg text-foreground">{textos.naoEncontrou}</p>
           <CTAButton contexto={{ tipo: "duvidas" }} variant="secondary" className="self-start">
             {textos.perguntar}

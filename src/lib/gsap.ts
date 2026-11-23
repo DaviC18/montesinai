@@ -1,9 +1,10 @@
 // ÚNICO ponto do projeto que importa "gsap" / "@gsap/react" (ARCHITECTURE § Padrões GSAP).
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP); // idempotente: registro no topo do módulo
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP); // idempotente: registro no topo do módulo
 gsap.defaults({ ease: "power2.out", duration: 0.6 });
 
 export const MOTION_CONDITIONS = {
@@ -19,4 +20,4 @@ export const DURATION = { fast: 0.3, base: 0.6, slow: 0.9 } as const; // segundo
 export const EASE = { out: "power2.out", inOut: "power2.inOut", soft: "power1.out" } as const;
 export const STAGGER = 0.08 as const;
 
-export { gsap, ScrollTrigger, useGSAP };
+export { gsap, ScrollTrigger, SplitText, useGSAP };

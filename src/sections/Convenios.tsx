@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import { CTAButton } from "@/components/base/CTAButton";
 import { Container } from "@/components/base/Container";
 import { Heading } from "@/components/base/Heading";
 import { Section } from "@/components/base/Section";
 import { clinica } from "@/data/clinica";
 import { confirmados } from "@/lib/conteudo";
+import { useReveal } from "@/hooks/useReveal";
 import { SECTION_IDS } from "@/lib/sections";
 
 const textos = clinica.ui.convenios;
@@ -11,15 +13,22 @@ const textos = clinica.ui.convenios;
 export default function Convenios() {
   const planos = confirmados(clinica.convenios.itens);
   const { particular } = clinica.convenios;
+  const scope = useRef<HTMLElement>(null);
+  useReveal(scope);
 
   return (
-    <Section id={SECTION_IDS.convenios} tone="muted" aria-labelledby="convenios-titulo">
+    <Section ref={scope} id={SECTION_IDS.convenios} tone="muted" aria-labelledby="convenios-titulo">
       <Container>
-        <Heading level={2} id="convenios-titulo" className="max-w-texto text-primary">
+        <Heading
+          level={2}
+          id="convenios-titulo"
+          data-anim="reveal"
+          className="max-w-texto text-primary"
+        >
           {textos.titulo}
         </Heading>
 
-        <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
+        <div data-anim="stagger" className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
           <div className="border-t-2 border-primary pt-6">
             <Heading level={3} className="text-foreground">
               {textos.planosTitulo}

@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { clinica } from "@/data/clinica";
+import { ScrollTrigger } from "@/lib/gsap";
 import ComoAgendar from "@/sections/ComoAgendar";
 import Convenios from "@/sections/Convenios";
 import CTAFinal from "@/sections/CTAFinal";
@@ -13,6 +15,17 @@ import Localizacao from "@/sections/Localizacao";
 import WhatsAppFab from "@/sections/WhatsAppFab";
 
 function App() {
+  // Fontes trocam métricas depois do primeiro paint: recalcula os gatilhos uma vez (regra 9).
+  useEffect(() => {
+    let ativo = true;
+    document.fonts?.ready.then(() => {
+      if (ativo) ScrollTrigger.refresh();
+    });
+    return () => {
+      ativo = false;
+    };
+  }, []);
+
   return (
     <>
       <a

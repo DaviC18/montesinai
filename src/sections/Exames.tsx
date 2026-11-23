@@ -1,20 +1,24 @@
+import { useRef } from "react";
 import { FlaskConical } from "lucide-react";
 import { CTAButton } from "@/components/base/CTAButton";
 import { Container } from "@/components/base/Container";
 import { Heading } from "@/components/base/Heading";
 import { Section } from "@/components/base/Section";
 import { clinica } from "@/data/clinica";
+import { useReveal } from "@/hooks/useReveal";
 import { SECTION_IDS } from "@/lib/sections";
 
 const textos = clinica.ui.exames;
 
 export default function Exames() {
   const { exames } = clinica;
+  const scope = useRef<HTMLElement>(null);
+  useReveal(scope);
   const mostrarLista = !exames.pendente && exames.itens.length > 0;
 
   return (
-    <Section id={SECTION_IDS.exames} aria-labelledby="exames-titulo">
-      <Container className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+    <Section ref={scope} id={SECTION_IDS.exames} aria-labelledby="exames-titulo">
+      <Container data-anim="stagger" className="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <span
             aria-hidden="true"

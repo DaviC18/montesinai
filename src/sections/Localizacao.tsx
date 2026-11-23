@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { MapPin, Navigation, Phone } from "lucide-react";
 import { Container } from "@/components/base/Container";
 import { Heading } from "@/components/base/Heading";
@@ -7,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { clinica } from "@/data/clinica";
 import { useStatusHorario } from "@/hooks/useStatusHorario";
 import { getTabelaHorario } from "@/lib/horario-tabela";
+import { useReveal } from "@/hooks/useReveal";
 import { SECTION_IDS } from "@/lib/sections";
 import { cn } from "@/lib/utils";
 
@@ -19,15 +21,17 @@ const botao =
 export default function Localizacao() {
   const status = useStatusHorario();
   const linhas = getTabelaHorario();
+  const scope = useRef<HTMLElement>(null);
+  useReveal(scope);
 
   return (
-    <Section id={SECTION_IDS.localizacao} aria-labelledby="localizacao-titulo">
+    <Section ref={scope} id={SECTION_IDS.localizacao} aria-labelledby="localizacao-titulo">
       <Container>
-        <Heading level={2} id="localizacao-titulo" className="text-primary">
+        <Heading level={2} id="localizacao-titulo" data-anim="reveal" className="text-primary">
           {textos.titulo}
         </Heading>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div data-anim="stagger" className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="flex flex-col gap-10 lg:col-span-5">
             <div>
               <Heading level={3} size="h4" className="flex items-center gap-2 text-foreground">
