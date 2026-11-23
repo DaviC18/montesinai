@@ -1,6 +1,7 @@
 # Kit Claude Code — Site Clínica Monte Sinai
 
 ## Como usar
+
 1. Descompacte este kit na pasta onde o projeto vai ficar.
 2. Abra o Claude Code nessa pasta.
 3. Rode a Fase 0 (ela cria o projeto Vite e instala as skills):
@@ -11,6 +12,7 @@
 4. Revise o resumo, depois siga: `/orquestrar 1`, `/orquestrar 2`… até a 5.
 
 ## O que tem aqui
+
 ```
 CLAUDE.md                     regras do projeto (o Claude Code lê sozinho)
 docs/SPEC.md                  o que construir
@@ -23,4 +25,5 @@ scripts/setup-skills.sh       instala Taste Skill, GSAP Skills, find-skills e sk
 ```
 
 ## Reaproveitar para outro cliente
+
 Troque `src/data/clinica.ts`, a seção 1 e 3 da SPEC e os tokens de cor — o resto do fluxo continua igual.

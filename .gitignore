@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Config local de ferramentas
+.claude/settings.local.json
+.impeccable/config.local.json
+coverage

@@ -126,20 +126,30 @@ export const clinica = {
   ],
 
   comoAgendar: [
-    { passo: 1, titulo: "Escolha a especialidade", texto: "Veja abaixo qual especialista você precisa." },
+    {
+      passo: 1,
+      titulo: "Escolha a especialidade",
+      texto: "Veja abaixo qual especialista você precisa.",
+    },
     { passo: 2, titulo: "Chame no WhatsApp", texto: "A mensagem já vai pronta, é só enviar." },
-    { passo: 3, titulo: "Confirme seu horário", texto: "Nossa equipe confirma o dia e a hora com você." },
+    {
+      passo: 3,
+      titulo: "Confirme seu horário",
+      texto: "Nossa equipe confirma o dia e a hora com você.",
+    },
   ],
 
   faq: [
     {
       pergunta: "Vocês atendem convênio?",
-      resposta: "Sim. Consulte a lista de convênios acima ou chame no WhatsApp para confirmar o seu plano.",
+      resposta:
+        "Sim. Consulte a lista de convênios acima ou chame no WhatsApp para confirmar o seu plano.",
       pendente: false,
     },
     {
       pergunta: "Quais documentos levo na consulta?",
-      resposta: "Documento com foto, carteirinha do convênio (se houver) e pedido médico, quando for exame.",
+      resposta:
+        "Documento com foto, carteirinha do convênio (se houver) e pedido médico, quando for exame.",
       pendente: true, // TODO: confirmar
     },
     {
